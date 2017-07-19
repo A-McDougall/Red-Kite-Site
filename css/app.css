@@ -1,0 +1,12 @@
+#mapid { height: 95%; }
+
+.header-app{
+    background-image: none;
+    background-color: black;
+    height: 100%;
+}
+
+.header-content.header-content-app{
+    padding-top: 65px;
+    height: 100%;
+}

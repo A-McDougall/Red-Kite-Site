@@ -85,10 +85,6 @@
                     <p class="text-faded">Red Kite is a spin-out company from the University of Leeds, who specialise in processing and visualizing ESA's Sentinel-1 satellite data.</p>
                     <p class="text-faded">This demo application provides you with an opportunity to explore the rich data set of InSAR measurements, through a simple interface.</p>
                     <p class="text-faded">All developments on this website have been produced using open-source software.</p>
-                    <!--<h2 class="section-heading">We've got what you need!</h2>-->
-                    <!--<hr class="light">-->
-                    <!--<p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>-->
-                    <!--<a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>-->
                 </div>
             </div>
         </div>
@@ -129,31 +125,35 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div class="tab-pane active" id="Login">
-                                    <form role="form" class="form-horizontal">
+                                    <form role="form" class="form-horizontal" id="login-form">
+
+                                        <div id="error">
+                                            <!-- error will be shown here ! -->
+                                        </div>
+
                                         <div class="form-group">
-                                            <label for="email" class="col-sm-2 control-label">
-                                                Email</label>
+                                            <label for="email" class="col-sm-2 control-label">Email</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="email1" placeholder="Email" />
+                                                <input type="email" class="form-control" id="login-email" name="login-email" placeholder="user@host.com"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1" class="col-sm-2 control-label">Password</label>
+                                            <label for="password" class="col-sm-2 control-label">Password</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" />
+                                                <input type="password" class="form-control" id="login-password" name="login-password" />
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-2">
                                             </div>
                                             <div class="col-sm-10">
-                                                <button type="submit" class="btn btn-primary btn-sm modal-btn">
-                                                    Submit</button>
+                                                <button type="submit" class="btn btn-primary btn-sm modal-btn" id="btn-login" name="btn-login"><span class="glyphicon glyphicon-log-in"></span>&nbsp; Log in</button>
                                                 <!--<a href="javascript:;">Forgot your password?</a>-->
                                             </div>
                                         </div>
                                     </form>
                                 </div>
+
                                 <div class="tab-pane" id="Registration">
                                     <form role="form" class="form-horizontal">
                                         <div class="form-group">
@@ -222,7 +222,9 @@
 
     <!-- Theme JavaScript -->
     <script src="js/creative.js"></script>
-
+    <script src="js/login.js"></script>
+    <script src="js/validation.min.js"></script>
+    <script src="js/userAuthentication.js"></script>
 </body>
 
 </html>

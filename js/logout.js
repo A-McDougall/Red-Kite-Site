@@ -1,0 +1,1 @@
+// logout process from the app back to the frontpage

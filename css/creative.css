@@ -484,3 +484,7 @@ body {
 .modal-dialog .col-md-8{
     width: 100%;
 }
+
+.form-horizontal{
+  padding-top: 10px;
+}
