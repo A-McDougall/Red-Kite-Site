@@ -72,9 +72,6 @@ $('document').ready(function() {
                     response = "ok";
                 }
 
-                // Put returned data into array
-
-
                 if (response == "ok") {
                     // Prompt user to download data.
                     console.log('have data');
