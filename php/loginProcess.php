@@ -22,7 +22,7 @@
                     ],
                     'limit'=>1
                 ];
-            $cursor = $conn->$db_u->$user_col->find($find_user, $options);
+            $cursor = $conn_u->$db_u->$user_col->find($find_user, $options);
 
             $returned = '';
             foreach($cursor as $doc)

@@ -155,7 +155,7 @@ aside {
   }
   .navbar-default .navbar-header .navbar-brand:hover,
   .navbar-default .navbar-header .navbar-brand:focus {
-    color: white;
+    color: rgba(255, 255, 255, 0.7);
   }
   .navbar-default .nav > li > a,
   .navbar-default .nav > li > a:focus {
@@ -170,7 +170,7 @@ aside {
     border-color: rgba(34, 34, 34, 0.05);
   }
   .navbar-default.affix .navbar-header .navbar-brand {
-    color: white;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
   }
   .navbar-default.affix .navbar-header .navbar-brand:hover,
