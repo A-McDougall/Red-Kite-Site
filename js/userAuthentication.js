@@ -5,6 +5,9 @@
 if (typeof api_key === "undefined"){
     var users_api_key = '';
 }
+if (typeof user_name === "undefined"){
+    var user_name = '';
+}
 if (typeof users_max_zoom === "undefined") {
     var users_max_zoom = 14;
 }
@@ -38,6 +41,22 @@ function get_zoom(){
         },
         error: function(xhr, desc, err) {
             localStorage.removeItem(users_max_zoom);
+            console.log('Not logged in');
+        }
+    });
+}
+
+
+function get_uname(){
+    return $.ajax({
+        url: 'php/get_users_name.php',
+        // async: false,
+        success: function(data) {
+            user_name = data;
+            localStorage.user_name = user_name;
+        },
+        error: function(xhr, desc, err) {
+            localStorage.removeItem(user_name);
             console.log('Not logged in');
         }
     });
@@ -85,6 +104,11 @@ function storedAPI(){
     console.log('storedAPI key: '+api_key);
     return api_key;
 }
+function storedUname(){
+    user_name = localStorage.user_name;
+    console.log('storedAPI key: '+user_name);
+    return user_name;
+}
 function storedZoom(){
     max_zoom = localStorage.users_max_zoom;
     console.log('stored users_max_zoom: '+max_zoom);
@@ -100,5 +124,6 @@ function storedLocation(){
 
 
 function userReady(){
-    return $.when(get_api(), get_zoom(), get_location())
+    return $.when(get_uname(), get_api(), get_zoom(), get_location())
 }
+
