@@ -1,7 +1,7 @@
 /*!
  * Start Bootstrap - Creative v3.3.7+1 (http://startbootstrap.com/template-overviews/creative)
  * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-s/LICENSE)
  */
 html,
 body {
@@ -118,7 +118,15 @@ aside {
 /*}*/
 
 
-
+#login_header{
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 13px;
+  color: #b70000;
+}
+#login_header:hover{
+  color: #dd0000;
+}
 
 .navbar-default .nav > li > a,
 .navbar-default .nav > li > a:focus {

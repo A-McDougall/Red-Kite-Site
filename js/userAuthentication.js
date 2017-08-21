@@ -38,6 +38,7 @@ function get_zoom(){
         success: function(data) {
             users_max_zoom = data;
             localStorage.users_max_zoom = users_max_zoom;
+            if (!localStorage.users_max_zoom) {console.log('No localStorage user max zoon'); window.location.href = "./"; }
         },
         error: function(xhr, desc, err) {
             localStorage.removeItem(users_max_zoom);
@@ -54,6 +55,7 @@ function get_uname(){
         success: function(data) {
             user_name = data;
             localStorage.user_name = user_name;
+            if (!localStorage.user_name) {console.log('No localStorage user name'); window.location.href = "./"; }
         },
         error: function(xhr, desc, err) {
             localStorage.removeItem(user_name);
@@ -89,6 +91,7 @@ function get_location(setCentre){
                 users_centre = JSON.parse(data);
             }
             localStorage.users_centre = users_centre;
+            if (!localStorage.users_centre) {console.log('No localStorage user centre'); window.location.href = "./"; }
             console.log('ajax centre: '+users_centre);
         },
         error: function(xhr, desc, err) {
@@ -127,3 +130,23 @@ function userReady(){
     return $.when(get_uname(), get_api(), get_zoom(), get_location())
 }
 
+function userUnready(){
+    localStorage.removeItem(users_api_key);
+    localStorage.removeItem(users_max_zoom);
+    localStorage.removeItem(user_name);
+    localStorage.removeItem(users_centre);
+    return $.when(get_uname(), get_api(), get_zoom(), get_location())
+}
+
+// Check if the login header exists, and update the text to the user's username
+var login_header = document.getElementById('login_header');
+if (login_header != null){
+    if (localStorage.user_name){
+        login_header.innerHTML = localStorage.user_name;
+    } else {
+        // If no local bariable is stored for the user name, then update the text, but then quit out and go back to the
+        // front page
+        login_header.innerHTML = 'NO USERNAME';
+        get_uname();
+    }
+}

@@ -1,0 +1,9 @@
+<?php
+ session_start();
+ unset($_SESSION['user_session']);
+ unset($_SESSION['apikey']);
+ unset($_SESSION['ulon']);
+ unset($_SESSION['ulat']);
+ unset($_SESSION['user_session']);
+ unset($_SESSION['max_zoom']);
+?>

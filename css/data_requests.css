@@ -45,3 +45,16 @@ div.tab-data-request button.active {
     from {opacity: 0;}
     to {opacity: 1;}
 }
+
+div.header-content-inner {
+    padding-top: 50px;
+}
+
+.rect-coords{
+    float: left;
+    width: 120px;
+}
+
+.control-label{
+    float: left;
+}

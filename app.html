@@ -52,8 +52,6 @@
     <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
     <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-    <script src="js/userAuthentication.js"></script>
-
 </head>
 
 <body id="page-top">
@@ -72,10 +70,15 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
+                    <a class="page-scroll" href="./data_request.html">Data Request</a>
+                </li>
+                <li>
                     <a class="page-scroll" href="#contact">Contact</a>
                 </li>
                 <li>
-                    <a id="login_header">Log in</a>
+                    <!--Add a login header element, that will update to the logged in user's name, if not it should exit
+                    back to the main web page as not authorized to log into the app.-->
+                    <a id="login_header" href="#">LOG IN</a>
                 </li>
             </ul>
         </div>
@@ -128,6 +131,9 @@
 
 <!-- Theme JavaScript -->
 <script src="js/creative.js"></script>
+
+<script src="js/userAuthentication.js"></script>
+<script src="js/logout.js"></script>
 
 <!-- App js objects-->
 <script src="js/app.js"></script>

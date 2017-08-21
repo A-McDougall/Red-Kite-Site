@@ -53,7 +53,15 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
+                    <a class="page-scroll" href="/app.html">App</a>
+                </li>
+                <li>
                     <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+                <li>
+                    <!--Add a login header element, that will update to the logged in user's name, if not it should exit
+                    back to the main web page as not authorized to log into the app.-->
+                    <a id="login_header" href="#">LOG IN</a>
                 </li>
             </ul>
         </div>
@@ -70,10 +78,10 @@
             <p>Input the coordinates of where you would like to request data.</p>
 
             <div class="tab-data-request">
-                <button class="tablinks" onclick="openCity(event, 'Point')" id="defaultOpen">Point</button>
-                <button class="tablinks" onclick="openCity(event, 'Rectangle')">Rectangle</button>
-                <button class="tablinks" onclick="openCity(event, 'Circle')">Circle</button>
-                <button class="tablinks" onclick="openCity(event, 'Polygon')">Polygon</button>
+                <button class="tablinks" onclick="openSelectionAreaTab(event, 'Point')" id="defaultOpen">Point</button>
+                <button class="tablinks" onclick="openSelectionAreaTab(event, 'Rectangle')">Rectangle</button>
+                <button class="tablinks" onclick="openSelectionAreaTab(event, 'Circle')">Circle</button>
+                <button class="tablinks" onclick="openSelectionAreaTab(event, 'Polygon')">Polygon</button>
             </div>
 
             <div id="Point" class="tab-dr-content">
@@ -86,13 +94,13 @@
                     <div class="form-group">
                         <label for="p_lon" class="col-sm-2 control-label">Longitude</label>
                         <div class="col-sm-10">
-                            <input type="number" step="0.00001" class="form-control" id="p_lon" name="p_lon" placeholder="12.34"/>
+                            <input type="number" step="0.00001" class="form-control rect-coords" id="p_lon" name="p_lon" placeholder="Lon"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="p_lat" class="col-sm-2 control-label">Latitude</label>
                         <div class="col-sm-10">
-                            <input type="number" step="0.00001" class="form-control" id="p_lat" name="p_lat" placeholder="56.78"/>
+                            <input type="number" step="0.00001" class="form-control rect-coords" id="p_lat" name="p_lat" placeholder="Lat"/>
                         </div>
                     </div>
                     <div class="row">
@@ -110,14 +118,65 @@
 
             <div id="Rectangle" class="tab-dr-content">
                 <h3>Rectangle</h3>
-                <p>WIP</p>
+                <p>Get data within a rectangle of our two corner coordinates (NW and SE).</p>
+                <form role="form" class="form-horizontal" id="request_rectangle_data">
+                    <div id="error">
+                        <!-- error will be shown here ! -->
+                    </div>
+                    <div class="form-group">
+                        <label for="p_lon" class="col-sm-2 control-label">North West:</label>
+                        <div class="col-sm-10">
+                            <input type="number" step="0.00001" class="form-control rect-coords" id="NW_lon" name="NW_lon" placeholder="Lon"/>
+                            <input type="number" step="0.00001" class="form-control rect-coords" id="NW_lat" name="NW_lat" placeholder="Lat"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="p_lat" class="col-sm-2 control-label">South East:</label>
+                        <div class="col-sm-10">
+                            <input type="number" step="0.00001" class="form-control rect-coords" id="SE_lon" name="SE_lon" placeholder="Lon"/>
+                            <input type="number" step="0.00001" class="form-control rect-coords" id="SE_lat" name="SE_lat" placeholder="Lat"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary btn-sm modal-btn" id="btn-rectangle-dr"><span class="glyphicon glyphicon-download-alt"></span>&nbsp; Request</button>
+                        </div>
+                    </div>
+                </form>
 
                 <!--<span onclick="this.parentElement.style.display='none'"></span>-->
             </div>
 
             <div id="Circle" class="tab-dr-content">
                 <h3>Circle</h3>
-                <p>WIP</p>
+                <p>Get data within a rectangle of our two corner coordinates (NW and SE).</p>
+                <form role="form" class="form-horizontal" id="request_circle_data">
+                    <div id="error">
+                        <!-- error will be shown here ! -->
+                    </div>
+                    <div class="form-group">
+                        <label for="p_lon" class="col-sm-2 control-label">Centre:</label>
+                        <div class="col-sm-10">
+                            <input type="number" step="0.00001" class="form-control rect-coords" id="c_lon" name="c_lon" placeholder="Lon"/>
+                            <input type="number" step="0.00001" class="form-control rect-coords" id="c_lat" name="c_lat" placeholder="Lat"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="p_lat" class="col-sm-2 control-label">Radius:</label>
+                        <div class="col-sm-10">
+                            <input type="number" step="0.01" class="form-control rect-coords" id="c_rad" name="c_rad" placeholder="meters"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary btn-sm modal-btn" id="btn-circle-dr"><span class="glyphicon glyphicon-download-alt"></span>&nbsp; Request</button>
+                        </div>
+                    </div>
+                </form>
 
                 <!--<span onclick="this.parentElement.style.display='none'">x</span>-->
             </div>
@@ -169,6 +228,10 @@
 <script src="js/creative.js"></script>
 <script src="js/tab-dr-controller.js"></script>
 <script src="js/validation.min.js"></script>
+
+<script src="js/userAuthentication.js"></script>
+<script src="js/logout.js"></script>
+
 
 </body>
 
